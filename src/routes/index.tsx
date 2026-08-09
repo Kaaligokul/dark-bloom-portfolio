@@ -85,7 +85,7 @@ const EDUCATION = [
   {
     school: "Kaamadhenu Arts and Science College",
     detail: "M.Sc. Computer Science",
-    meta: "Pursuing",
+    meta: "2026 · 74%",
   },
   {
     school: "Gobi Arts and Science College",
@@ -143,7 +143,7 @@ function Portfolio() {
               Gokul <span className="text-gradient">K</span>
             </h1>
             <p className="animate-rise mt-4 max-w-2xl text-xl text-muted-foreground sm:text-2xl">
-              M.Sc. Computer Science student · Web developer · Data & AI annotation specialist
+              M.Sc. Computer Science · Web developer · Data & AI annotation specialist
             </p>
             <p className="animate-rise mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
               Seeking a challenging role where I can apply my technical skills to solve complex
@@ -171,13 +171,12 @@ function Portfolio() {
           <div className="grid gap-8 md:grid-cols-[1.4fr_1fr]">
             <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
               <p>
-                I am a Computer Science postgraduate student from Anthiyur, Tamil Nadu, with a
+                &nbsp; &nbsp;I am a Computer Science postgraduate student from Anthiyur, Tamil Nadu, with a
                 background in Information Technology and hands-on experience across web development,
                 databases and AI training data.
               </p>
               <p>
-                My work spans building database-backed web platforms with PHP and SQL Server, and
-                producing high-precision 2D and 3D ground-truth data for autonomous driving
+                I have producing high-precision 2D and 3D ground-truth data for autonomous driving
                 perception models. I enjoy problems that reward patience, structure and logical
                 thinking.
               </p>
