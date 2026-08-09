@@ -24,8 +24,9 @@ export const Route = createFileRoute("/resume")({
 
 function ResumePage() {
   return (
-    <div className="flex h-screen flex-col bg-background">
-      <header className="flex items-center justify-between border-b border-border/60 px-6 py-4">
+    <div className="flex h-screen flex-col">
+      <header className="flex items-center justify-between border-b border-border/60 bg-background/60 px-6 py-4 backdrop-blur-xl">
+
         <h1 className="font-mono text-sm font-bold tracking-widest text-primary">
           &lt;GOKUL.K / RESUME&gt;
         </h1>
