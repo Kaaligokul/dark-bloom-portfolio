@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ParticleField } from "@/components/ParticleField";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -33,7 +34,7 @@ const NAV = [
 ];
 
 const SKILLS = [
-  { group: "Programming", items: ["Java", "Python", "C++", "JavaScript"] },
+  { group: "Programming", items: ["Java", "Python", "C++", "C"] },
   { group: "Web", items: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap"] },
   { group: "Databases", items: ["MongoDB", "MySQL"] },
   {
@@ -318,12 +319,13 @@ function Portfolio() {
               </a>
             ))}
           </div>
-          <Link
-            to="/resume"
+          <a
+            href={resumeAsset.url}
+            download={resumeAsset.original_filename}
             className="mt-10 inline-block rounded-md bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--glow-primary)] transition-transform hover:scale-105"
           >
-            View resume
-          </Link>
+            Download resume
+          </a>
         </section>
       </main>
 
