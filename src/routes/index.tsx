@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ParticleField } from "@/components/ParticleField";
-import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -34,10 +33,23 @@ const NAV = [
 ];
 
 const SKILLS = [
-  { group: "Programming", items: ["Java", "Python", "C++", "C", "JavaScript"] },
-  { group: "Web", items: ["HTML5", "CSS3", "React.js", "PHP", "Bootstrap"] },
-  { group: "Databases", items: ["MongoDB", "MySQL", "SQL Server"] },
-  { group: "Tools & Strengths", items: ["Git & GitHub", "Logical thinking", "Testing", "Discipline"] },
+  { group: "Programming", items: ["Java", "Python", "C++", "JavaScript"] },
+  { group: "Web", items: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap"] },
+  { group: "Databases", items: ["MongoDB", "MySQL"] },
+  {
+    group: "Tools",
+    items: [
+      "Git & GitHub (version control)",
+      "VS Code (coding)",
+      "GT Studio (annotation)",
+      "Canva (editing)",
+      "PicsArt (editing)",
+    ],
+  },
+  {
+    group: "Strengths",
+    items: ["Logical thinking", "Time management", "Team collaboration", "Adaptability"],
+  },
 ];
 
 const EXPERIENCE = [
@@ -110,13 +122,12 @@ function Portfolio() {
               </li>
             ))}
           </ul>
-          <a
-            href={resumeAsset.url}
-            download="Gokul_Resume.pdf"
+          <Link
+            to="/resume"
             className="rounded-md border border-primary/60 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
           >
             Resume
-          </a>
+          </Link>
         </nav>
       </header>
 
@@ -175,7 +186,7 @@ function Portfolio() {
                 ["Location", "Anthiyur, Tamil Nadu"],
                 ["Degree", "M.Sc. Computer Science"],
                 ["Languages", "Tamil, English"],
-                ["Interests", "Chess, Carrom, Music"],
+                ["Interests", "Chess, Carrom, Music, Home workout"],
               ].map(([k, v]) => (
                 <li key={k} className="flex justify-between gap-4 border-b border-border/60 pb-3 last:border-0 last:pb-0">
                   <span className="text-muted-foreground">{k}</span>
@@ -188,7 +199,7 @@ function Portfolio() {
 
         <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
           <SectionTitle index="02." title="Skills" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SKILLS.map((s) => (
               <div key={s.group} className="surface-card surface-card-hover p-6">
                 <h3 className="font-mono text-sm uppercase tracking-widest text-primary">
@@ -307,13 +318,12 @@ function Portfolio() {
               </a>
             ))}
           </div>
-          <a
-            href={resumeAsset.url}
-            download="Gokul_Resume.pdf"
+          <Link
+            to="/resume"
             className="mt-10 inline-block rounded-md bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--glow-primary)] transition-transform hover:scale-105"
           >
-            Download resume
-          </a>
+            View resume
+          </Link>
         </section>
       </main>
 
