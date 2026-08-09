@@ -63,6 +63,51 @@
 
 :root {
   --radius: 0.75rem;
+  --background: oklch(0.98 0.005 240);
+  --foreground: oklch(0.22 0.03 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.03 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.03 250);
+  --primary: oklch(0.6 0.13 195);
+  --primary-foreground: oklch(0.99 0.005 220);
+  --secondary: oklch(0.95 0.012 240);
+  --secondary-foreground: oklch(0.25 0.03 250);
+  --muted: oklch(0.95 0.012 240);
+  --muted-foreground: oklch(0.48 0.02 245);
+  --accent: oklch(0.58 0.16 300);
+  --accent-foreground: oklch(0.99 0.005 220);
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 220);
+  --border: oklch(0.88 0.012 245);
+  --input: oklch(0.88 0.012 245);
+  --ring: oklch(0.6 0.13 195);
+  --chart-1: oklch(0.6 0.13 195);
+  --chart-2: oklch(0.58 0.16 300);
+  --chart-3: oklch(0.6 0.14 145);
+  --chart-4: oklch(0.7 0.15 85);
+  --chart-5: oklch(0.62 0.17 25);
+  --sidebar: oklch(0.97 0.008 240);
+  --sidebar-foreground: oklch(0.22 0.03 250);
+  --sidebar-primary: oklch(0.6 0.13 195);
+  --sidebar-primary-foreground: oklch(0.99 0.005 220);
+  --sidebar-accent: oklch(0.95 0.012 240);
+  --sidebar-accent-foreground: oklch(0.25 0.03 250);
+  --sidebar-border: oklch(0.88 0.012 245);
+  --sidebar-ring: oklch(0.6 0.13 195);
+
+  --particle-rgb: 14, 150, 160;
+  --gradient-hero: linear-gradient(135deg, oklch(0.6 0.13 195), oklch(0.58 0.16 300));
+  --gradient-surface: linear-gradient(160deg, oklch(1 0 0 / 0.9), oklch(0.97 0.01 240 / 0.7));
+  --glow-primary: 0 0 32px oklch(0.6 0.13 195 / 0.25);
+  --shadow-card: 0 18px 45px oklch(0.55 0.03 250 / 0.16);
+  --aura-1: oklch(0.6 0.13 195 / 0.16);
+  --aura-2: oklch(0.58 0.16 300 / 0.14);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.dark {
   --background: oklch(0.16 0.025 250);
   --foreground: oklch(0.95 0.01 220);
   --card: oklch(0.2 0.028 250);
@@ -105,9 +150,10 @@
   );
   --glow-primary: 0 0 40px oklch(0.82 0.15 190 / 0.28);
   --shadow-card: 0 18px 50px oklch(0.1 0.03 250 / 0.55);
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --aura-1: oklch(0.72 0.16 300 / 0.14);
+  --aura-2: oklch(0.82 0.15 190 / 0.12);
 }
+
 
 @theme inline {
   --font-display: var(--font-display);
@@ -162,11 +208,24 @@
     color: var(--color-foreground);
     font-family: var(--font-display);
     background-image:
-      radial-gradient(60rem 40rem at 80% -10%, oklch(0.72 0.16 300 / 0.14), transparent),
-      radial-gradient(50rem 40rem at 0% 0%, oklch(0.82 0.15 190 / 0.12), transparent);
+      radial-gradient(60rem 40rem at 80% -10%, var(--aura-1), transparent),
+      radial-gradient(50rem 40rem at 0% 0%, var(--aura-2), transparent);
     background-attachment: fixed;
+    transition:
+      background-color 0.5s ease,
+      color 0.5s ease;
   }
 }
+
+@utility aura-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.65;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
 
 @utility text-gradient {
   background-image: var(--gradient-hero);

@@ -47,13 +47,25 @@ export function ParticleField() {
       mouse.y = -9999;
     };
 
+    let t = 0;
     const draw = () => {
       const rgb = accent();
+      t += 0.01;
       ctx.clearRect(0, 0, w, h);
+      ctx.globalCompositeOperation = "lighter";
 
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
+        const dmx = mouse.x - p.x;
+        const dmy = mouse.y - p.y;
+        const dd = Math.hypot(dmx, dmy);
+        if (dd < 200 && dd > 1) {
+          p.vx += (dmx / dd) * 0.006;
+          p.vy += (dmy / dd) * 0.006;
+        }
+        p.vx = Math.max(-0.9, Math.min(0.9, p.vx * 0.995));
+        p.vy = Math.max(-0.9, Math.min(0.9, p.vy * 0.995));
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
       }
@@ -65,7 +77,11 @@ export function ParticleField() {
 
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < 130) {
-            ctx.strokeStyle = `rgba(${rgb}, ${(1 - d / 130) * 0.22})`;
+            const g = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+            const alpha = (1 - d / 130) * 0.28;
+            g.addColorStop(0, `rgba(${rgb}, ${alpha})`);
+            g.addColorStop(1, `rgba(${rgb}, ${alpha * 0.35})`);
+            ctx.strokeStyle = g;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -74,20 +90,39 @@ export function ParticleField() {
           }
         }
         const dm = Math.hypot(a.x - mouse.x, a.y - mouse.y);
-        if (dm < 170) {
-          ctx.strokeStyle = `rgba(${rgb}, ${(1 - dm / 170) * 0.4})`;
+        if (dm < 190) {
+          ctx.strokeStyle = `rgba(${rgb}, ${(1 - dm / 190) * 0.5})`;
+          ctx.lineWidth = 1.2;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(mouse.x, mouse.y);
           ctx.stroke();
         }
-        ctx.fillStyle = `rgba(${rgb}, 0.75)`;
+
+        const pulse = 1.5 + Math.sin(t * 2 + a.x * 0.01) * 0.5;
+        ctx.shadowBlur = 14;
+        ctx.shadowColor = `rgba(${rgb}, 0.9)`;
+        ctx.fillStyle = `rgba(${rgb}, 0.85)`;
         ctx.beginPath();
-        ctx.arc(a.x, a.y, 1.6, 0, Math.PI * 2);
+        ctx.arc(a.x, a.y, pulse, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      if (mouse.x > -9000) {
+        const halo = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 130);
+        halo.addColorStop(0, `rgba(${rgb}, 0.22)`);
+        halo.addColorStop(1, `rgba(${rgb}, 0)`);
+        ctx.fillStyle = halo;
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 130, 0, Math.PI * 2);
         ctx.fill();
       }
+
+      ctx.globalCompositeOperation = "source-over";
       raf = requestAnimationFrame(draw);
     };
+
 
     resize();
     draw();
