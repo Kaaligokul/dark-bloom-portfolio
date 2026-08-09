@@ -123,14 +123,18 @@ function Portfolio() {
               </li>
             ))}
           </ul>
-          <Link
-            to="/resume"
-            className="rounded-md border border-primary/60 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
-          >
-            Resume
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/resume"
+              className="rounded-md border border-primary/60 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+            >
+              Resume
+            </Link>
+            <ThemeToggle />
+          </div>
         </nav>
       </header>
+
 
       <main id="top">
         <section className="relative overflow-hidden">
