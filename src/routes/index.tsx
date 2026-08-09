@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ParticleField } from "@/components/ParticleField";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
