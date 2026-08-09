@@ -139,9 +139,20 @@ function Portfolio() {
 
       <main id="top">
         <section className="relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <span className="aura-orb animate-float left-[8%] top-[12%] h-72 w-72 bg-primary/30" />
+            <span
+              className="aura-orb animate-float right-[6%] top-[30%] h-80 w-80 bg-accent/30"
+              style={{ animationDelay: "1.5s" }}
+            />
+            <span
+              className="aura-orb animate-glow-pulse bottom-[8%] left-[40%] h-64 w-64 bg-primary/20"
+            />
+          </div>
           <div className="absolute inset-0">
             <ParticleField />
           </div>
+
           <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-6 py-24">
             <p className="animate-rise font-mono text-sm text-primary">Hello, I am</p>
             <h1 className="animate-rise mt-4 text-5xl font-bold tracking-tight sm:text-7xl">
