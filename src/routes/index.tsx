@@ -34,10 +34,23 @@ const NAV = [
 ];
 
 const SKILLS = [
-  { group: "Programming", items: ["Java", "Python", "C++", "C", "JavaScript"] },
-  { group: "Web", items: ["HTML5", "CSS3", "React.js", "PHP", "Bootstrap"] },
-  { group: "Databases", items: ["MongoDB", "MySQL", "SQL Server"] },
-  { group: "Tools & Strengths", items: ["Git & GitHub", "Logical thinking", "Testing", "Discipline"] },
+  { group: "Programming", items: ["Java", "Python", "C++", "JavaScript"] },
+  { group: "Web", items: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap"] },
+  { group: "Databases", items: ["MongoDB", "MySQL"] },
+  {
+    group: "Tools",
+    items: [
+      "Git & GitHub (version control)",
+      "VS Code (coding)",
+      "GT Studio (annotation)",
+      "Canva (editing)",
+      "PicsArt (editing)",
+    ],
+  },
+  {
+    group: "Strengths",
+    items: ["Logical thinking", "Time management", "Team collaboration", "Adaptability"],
+  },
 ];
 
 const EXPERIENCE = [
