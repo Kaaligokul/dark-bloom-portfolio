@@ -1,7 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useReveal } from "@/hooks/use-reveal";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
