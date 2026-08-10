@@ -4,7 +4,9 @@ import { Menu, X } from "lucide-react";
 
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useReveal } from "@/hooks/use-reveal";
+import { CERTIFICATES } from "@/lib/certificates";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
+
 
 
 export const Route = createFileRoute("/")({
@@ -330,9 +332,27 @@ function Portfolio() {
             ))}
           </div>
           <div className="surface-card mt-6 p-6">
-            <h3 className="font-mono text-sm uppercase tracking-widest text-primary">Certificate</h3>
-            <p className="mt-3 text-muted-foreground">Python Basics — HackerRank</p>
+            <h3 className="font-mono text-sm uppercase tracking-widest text-primary">
+              Certificates
+            </h3>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {CERTIFICATES.map((c) => (
+                <Link
+                  key={c.id}
+                  to="/certificate/$id"
+                  params={{ id: c.id }}
+                  className="surface-card surface-card-hover block p-4"
+                >
+                  <p className="text-sm font-semibold text-foreground">{c.title}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{c.issuer}</p>
+                  <p className="mt-3 font-mono text-[11px] uppercase tracking-widest text-primary">
+                    View certificate →
+                  </p>
+                </Link>
+              ))}
+            </div>
           </div>
+
         </section>
 
         <section id="contact" data-reveal className="mx-auto max-w-3xl px-6 py-28 text-center">
@@ -341,11 +361,13 @@ function Portfolio() {
             I am open to internships and entry-level developer roles. The quickest way to reach me is
             email or phone.
           </p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {[
               ["Email", "gokulkaali55@gmail.com", "mailto:gokulkaali55@gmail.com"],
               ["Phone", "+91 93847 25516", "tel:+919384725516"],
               ["LinkedIn", "gokul-kailash", "https://www.linkedin.com/in/gokul-kailash-b4784224b"],
+              ["WhatsApp", "Chat with me", "https://wa.me/919384725516"],
+
             ].map(([label, value, href]) => (
               <a
                 key={label}
