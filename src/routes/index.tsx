@@ -90,15 +90,15 @@ const EDUCATION = [
   {
     school: "Kaamadhenu Arts and Science College",
     detail: "M.Sc. Computer Science",
-    meta: "2026 · 74%",
+    meta: "2026 · 74.13%",
   },
   {
     school: "Gobi Arts and Science College",
     detail: "B.Sc. Information Technology",
-    meta: "2024 · 72%",
+    meta: "2024 · 73.5%",
   },
-  { school: "Athani Govt Hr Sec School", detail: "Computer Science (Maths)", meta: "2021 · 79%" },
-  { school: "Little Flower Matriculation School", detail: "SSLC", meta: "2019 · 72%" },
+  { school: "Athani Govt Hr Sec School", detail: "Computer Science (Maths)", meta: "2021 · 79.06%" },
+  { school: "Little Flower Matriculation School", detail: "SSLC", meta: "2019 · 71.6%" },
 ];
 
 function SectionTitle({ index, title }: { index: string; title: string }) {
