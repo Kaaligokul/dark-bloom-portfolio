@@ -345,7 +345,7 @@ function Portfolio() {
             {[
               ["Email", "gokulkaali55@gmail.com", "mailto:gokulkaali55@gmail.com"],
               ["Phone", "+91 93847 25516", "tel:+919384725516"],
-              ["LinkedIn", "gokul-kailash", "https://www.linkedin.com/in/gokul-kailash"],
+              ["LinkedIn", "gokul-kailash", "https://www.linkedin.com/in/gokul-kailash-b4784224b"],
             ].map(([label, value, href]) => (
               <a
                 key={label}
