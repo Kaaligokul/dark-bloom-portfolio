@@ -112,6 +112,9 @@ function SectionTitle({ index, title }: { index: string; title: string }) {
 }
 
 function Portfolio() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  useReveal();
+
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
@@ -131,14 +134,44 @@ function Portfolio() {
           <div className="flex items-center gap-3">
             <Link
               to="/resume"
-              className="rounded-md border border-primary/60 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+              className="rounded-md border border-primary/60 px-3 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:px-4"
             >
               Resume
             </Link>
             <ThemeToggle />
+            <button
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="rounded-md border border-border p-2 text-foreground transition-colors hover:border-primary hover:text-primary md:hidden"
+            >
+              {menuOpen ? <Menu className="hidden" /> : null}
+              {menuOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
           </div>
         </nav>
+
+        {menuOpen ? (
+          <div className="animate-menu-in border-t border-border/60 bg-background/80 backdrop-blur-2xl md:hidden">
+            <ul className="mx-auto flex max-w-6xl flex-col px-6 py-3">
+              {NAV.map(([label, href], i) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    style={{ animationDelay: `${i * 60}ms` }}
+                    className="animate-menu-in block border-b border-border/40 py-3 text-sm text-muted-foreground transition-colors last:border-0 hover:text-primary"
+                  >
+                    <span className="font-mono text-xs text-primary">0{i + 1}.</span> {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </header>
+
 
 
       <main id="top">
