@@ -1,7 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useReveal } from "@/hooks/use-reveal";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
+
 
 export const Route = createFileRoute("/")({
   component: Portfolio,
@@ -108,6 +112,9 @@ function SectionTitle({ index, title }: { index: string; title: string }) {
 }
 
 function Portfolio() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  useReveal();
+
   return (
     <div className="min-h-screen">
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
@@ -127,14 +134,43 @@ function Portfolio() {
           <div className="flex items-center gap-3">
             <Link
               to="/resume"
-              className="rounded-md border border-primary/60 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+              className="rounded-md border border-primary/60 px-3 py-2 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground sm:px-4"
             >
               Resume
             </Link>
             <ThemeToggle />
+            <button
+              type="button"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+              className="rounded-md border border-border p-2 text-foreground transition-colors hover:border-primary hover:text-primary md:hidden"
+            >
+              {menuOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
           </div>
         </nav>
+
+        {menuOpen ? (
+          <div className="animate-menu-in border-t border-border/60 bg-background/80 backdrop-blur-2xl md:hidden">
+            <ul className="mx-auto flex max-w-6xl flex-col px-6 py-3">
+              {NAV.map(([label, href], i) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    style={{ animationDelay: `${i * 60}ms` }}
+                    className="animate-menu-in block border-b border-border/40 py-3 text-sm text-muted-foreground transition-colors last:border-0 hover:text-primary"
+                  >
+                    <span className="font-mono text-xs text-primary">0{i + 1}.</span> {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </header>
+
 
 
       <main id="top">
@@ -171,7 +207,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="about" className="mx-auto max-w-6xl px-6 py-24">
+        <section id="about" data-reveal className="mx-auto max-w-6xl px-6 py-24">
           <SectionTitle index="01." title="About me" />
           <div className="grid gap-8 md:grid-cols-[1.4fr_1fr]">
             <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
@@ -202,7 +238,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
+        <section id="skills" data-reveal className="mx-auto max-w-6xl px-6 py-24">
           <SectionTitle index="02." title="Skills" />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SKILLS.map((s) => (
@@ -223,7 +259,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="projects" className="mx-auto max-w-6xl px-6 py-24">
+        <section id="projects" data-reveal className="mx-auto max-w-6xl px-6 py-24">
           <SectionTitle index="03." title="Projects" />
           <article className="surface-card surface-card-hover p-8">
             <p className="font-mono text-xs uppercase tracking-widest text-primary">
@@ -260,7 +296,7 @@ function Portfolio() {
           </article>
         </section>
 
-        <section id="experience" className="mx-auto max-w-6xl px-6 py-24">
+        <section id="experience" data-reveal className="mx-auto max-w-6xl px-6 py-24">
           <SectionTitle index="04." title="Experience" />
           <div className="space-y-6 border-l border-border pl-6">
             {EXPERIENCE.map((e) => (
@@ -280,7 +316,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="education" className="mx-auto max-w-6xl px-6 py-24">
+        <section id="education" data-reveal className="mx-auto max-w-6xl px-6 py-24">
           <SectionTitle index="05." title="Education" />
           <div className="grid gap-6 sm:grid-cols-2">
             {EDUCATION.map((e) => (
@@ -299,7 +335,7 @@ function Portfolio() {
           </div>
         </section>
 
-        <section id="contact" className="mx-auto max-w-3xl px-6 py-28 text-center">
+        <section id="contact" data-reveal className="mx-auto max-w-3xl px-6 py-28 text-center">
           <SectionTitle index="06." title="Contact" />
           <p className="text-lg text-muted-foreground">
             I am open to internships and entry-level developer roles. The quickest way to reach me is
