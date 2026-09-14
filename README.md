@@ -2,8 +2,6 @@
 
 create or build dark theme technology animated professional portfolio referred by my resume and add java script and react.js and create portfolio using html, css, js, react js, particle js, MongoDB
 
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
