@@ -4,19 +4,7 @@ export function AnimatedBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
       <span className="aura-orb animate-float left-[6%] top-[8%] h-72 w-72 bg-primary/30" />
-      <span
-        className="aura-orb animate-drift right-[8%] top-[22%] h-80 w-80 bg-accent/30"
-        style={{ animationDelay: "1.5s" }}
-      />
-      <span
-        className="aura-orb animate-drift left-[38%] top-[48%] h-96 w-96 bg-primary/20"
-        style={{ animationDelay: "3s" }}
-      />
-      <span className="aura-orb animate-glow-pulse bottom-[6%] right-[24%] h-72 w-72 bg-accent/25" />
-      <span
-        className="aura-orb animate-float bottom-[18%] left-[12%] h-64 w-64 bg-accent/20"
-        style={{ animationDelay: "2.2s" }}
-      />
+      <span className="aura-orb animate-drift right-[8%] top-[42%] h-72 w-72 bg-accent/25" />
 
       {/* soft blur veil so the animation sits behind content */}
       <div className="absolute inset-0 backdrop-blur-[2px]" />
@@ -47,7 +35,7 @@ export function AnimatedBackground() {
   );
 }
 
-const MOTES = Array.from({ length: 26 }, (_, i) => ({
+const MOTES = Array.from({ length: 10 }, (_, i) => ({
   x: (i * 37) % 100,
   y: (i * 61) % 100,
   s: 3 + ((i * 7) % 5),

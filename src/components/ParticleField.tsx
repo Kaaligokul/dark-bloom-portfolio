@@ -119,7 +119,6 @@ export function ParticleField() {
       ctx.beginPath();
       for (const p of particles) {
         const pulse = reducedMotion.matches ? 1.5 : 1.4 + Math.sin(t * 2 + p.x * 0.01) * 0.35;
-        ctx.beginPath();
         ctx.arc(p.x, p.y, pulse, 0, Math.PI * 2);
       }
       ctx.fill();
