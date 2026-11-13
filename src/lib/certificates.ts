@@ -3,6 +3,8 @@ import genai from "@/assets/cert-genai.pdf.asset.json";
 import python from "@/assets/cert-python.pdf.asset.json";
 import yoga from "@/assets/cert-yoga.jpeg.asset.json";
 import agri from "@/assets/cert-agri.jpeg.asset.json";
+import gokulK from "@/assets/gokul-k-certificate.pdf.asset.json";
+import javaFullStack from "@/assets/java-full-stack-certificate.pdf.asset.json";
 
 export type Certificate = {
   id: string;
@@ -47,6 +49,20 @@ export const CERTIFICATES: Certificate[] = [
     issuer: "Gobi Arts & Science College",
     url: agri.url,
     kind: "image",
+  },
+  {
+    id: "financial-protection-wealth-creation",
+    title: "Financial Protection & Wealth Creation Skills",
+    issuer: "Aerlis Institute",
+    url: gokulK.url,
+    kind: "pdf",
+  },
+  {
+    id: "full-stack-java-development",
+    title: "Getting Started with Full Stack Java Development",
+    issuer: "Simplilearn SkillUp",
+    url: javaFullStack.url,
+    kind: "pdf",
   },
 ];
 
